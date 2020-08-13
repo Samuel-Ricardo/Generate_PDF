@@ -27,10 +27,7 @@ public class WritePDFController {
 
     public void generatePDF() {
         
-        if(body.isEmpty()){
-            
-            body.add(view.getjTextAreaBody().getText());
-        }
+        body.add(view.getjTextAreaBody().getText());
         
         String title = view.getjTextFieldTitle().getText();
         
@@ -46,6 +43,15 @@ public class WritePDFController {
     public void addParagraph() {
     
         body.add(view.getjTextAreaBody().getText());
+        body.add("");
+        
+        view.getjTextAreaBody().setText("");
+    }
+
+    public void addPage() {
+      
+        body.add(view.getjTextAreaBody().getText());
+        body.add("new page");
         
         view.getjTextAreaBody().setText("");
     }

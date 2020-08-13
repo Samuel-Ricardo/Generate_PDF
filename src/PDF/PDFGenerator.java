@@ -96,7 +96,12 @@ public class PDFGenerator {
                 
                 for (String string : body) {
                 
-                    document.add(new Paragraph(string));
+                    if(string.equals("new page")){
+                        
+                        document.newPage();
+                    }else{
+                        document.add(new Paragraph(string));
+                    }
             }
             
             document.close();

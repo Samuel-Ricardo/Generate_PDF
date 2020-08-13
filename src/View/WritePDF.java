@@ -46,6 +46,7 @@ public class WritePDF extends javax.swing.JFrame {
         jTextAreaBody = new javax.swing.JTextArea();
         jButtonGenerate = new javax.swing.JButton();
         jButtonAddParagraph = new javax.swing.JButton();
+        jButtonAddParagraph1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,13 @@ public class WritePDF extends javax.swing.JFrame {
             }
         });
 
+        jButtonAddParagraph1.setText("Adcionar Pagina");
+        jButtonAddParagraph1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddParagraph1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,6 +101,8 @@ public class WritePDF extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButtonAddParagraph)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAddParagraph1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,7 +119,9 @@ public class WritePDF extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAddParagraph)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddParagraph)
+                    .addComponent(jButtonAddParagraph1))
                 .addGap(26, 26, 26))
         );
 
@@ -123,6 +135,10 @@ public class WritePDF extends javax.swing.JFrame {
     private void jButtonAddParagraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddParagraphActionPerformed
         controller.addParagraph();
     }//GEN-LAST:event_jButtonAddParagraphActionPerformed
+
+    private void jButtonAddParagraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddParagraph1ActionPerformed
+        controller.addPage();
+    }//GEN-LAST:event_jButtonAddParagraph1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +177,7 @@ public class WritePDF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddParagraph;
+    private javax.swing.JButton jButtonAddParagraph1;
     private javax.swing.JButton jButtonGenerate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
