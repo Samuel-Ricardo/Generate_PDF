@@ -32,4 +32,8 @@ public class WritePDFController {
           generator.fillPDF(pdf,,);
         }
     }
+
+    public void addParagraph() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
