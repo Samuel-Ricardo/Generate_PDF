@@ -7,6 +7,7 @@ package View;
 
 import Controller.WritePDFController;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -28,6 +29,7 @@ public class WritePDF extends javax.swing.JFrame {
         initComponents();
         
         controller  = new WritePDFController(this);
+        controller.start();
     }
 
     /**
@@ -47,6 +49,7 @@ public class WritePDF extends javax.swing.JFrame {
         jButtonGenerate = new javax.swing.JButton();
         jButtonAddParagraph = new javax.swing.JButton();
         jButtonAddParagraph1 = new javax.swing.JButton();
+        jComboBoxPage = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +100,15 @@ public class WritePDF extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButtonAddParagraph)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAddParagraph1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(jComboBoxPage, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,8 +126,9 @@ public class WritePDF extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddParagraph)
-                    .addComponent(jButtonAddParagraph1))
-                .addGap(26, 26, 26))
+                    .addComponent(jButtonAddParagraph1)
+                    .addComponent(jComboBoxPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -179,6 +185,7 @@ public class WritePDF extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddParagraph;
     private javax.swing.JButton jButtonAddParagraph1;
     private javax.swing.JButton jButtonGenerate;
+    private javax.swing.JComboBox<Integer> jComboBoxPage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -186,6 +193,8 @@ public class WritePDF extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTitle;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     public JButton getjButtonAddParagraph() {
         return jButtonAddParagraph;
     }
@@ -242,5 +251,11 @@ public class WritePDF extends javax.swing.JFrame {
         this.jTextFieldTitle = jTextFieldTitle;
     }
 
+    public JComboBox<Integer> getjComboBoxPage() {
+        return jComboBoxPage;
+    }
 
+    public void setjComboBoxPage(JComboBox<Integer> jComboBoxPage) {
+        this.jComboBoxPage = jComboBoxPage;
+    }
 }

@@ -19,10 +19,12 @@ public class WritePDFController {
     private final WritePDF view;
     private PDFGenerator generator; 
     private ArrayList<String> body = new ArrayList<>();
+    private int index;
 
     public WritePDFController(WritePDF view) {
         this.view = view;
         this.generator = new PDFGenerator();
+        this.index = 0;
     }
 
     public void generatePDF() {
@@ -43,9 +45,11 @@ public class WritePDFController {
     public void addParagraph() {
     
         body.add(view.getjTextAreaBody().getText());
-        body.add("");
+        body.add(" ");
         
         view.getjTextAreaBody().setText("");
+        index ++;
+        fillPages();
     }
 
     public void addPage() {
@@ -54,5 +58,26 @@ public class WritePDFController {
         body.add("new page");
         
         view.getjTextAreaBody().setText("");
+        index ++;
+        fillPages();
+    }
+
+
+    public void start() {
+   
+        fillPages();
+        
+    
+    }
+
+    public void fillPages() {
+        int cont = 0;
+        
+        for (String string : body) {
+            
+            view.getjComboBoxPage().addItem(cont);
+            
+            cont++;
+        }
     }
 }
