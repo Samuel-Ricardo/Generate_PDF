@@ -9,6 +9,7 @@ import PDF.PDFGenerator;
 import View.WritePDF;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -21,6 +22,7 @@ public class WritePDFController {
     private ArrayList<String> body = new ArrayList<>();
 
     public WritePDFController(WritePDF view) {
+        
         this.view = view;
         this.generator = new PDFGenerator();
     }
@@ -42,16 +44,16 @@ public class WritePDFController {
 
     public void addParagraph() {
     
-        body.add(view.getjTextAreaBody().getText());
-        body.add(" ");
+        body.add(view.getjTextAreaBody().getText()+"\n\n");
         
         view.getjTextAreaBody().setText("");
+        
         fillPages();
     }
 
     public void addPage() {
       
-        body.add(view.getjTextAreaBody().getText());
+        body.add(view.getjTextAreaBody().getText()+"\n\n");
         body.add("new page");
         
         view.getjTextAreaBody().setText("");
@@ -62,24 +64,31 @@ public class WritePDFController {
     public void start() {
    
         fillPages();
-        
-        view.getjComboBoxPage().addItemListener((e) -> {
-            
-            int index = (Integer) view.getjComboBoxPage().getModel().getSelectedItem();
-            view.getjTextAreaBody().setText(body.get(index));
-        });
-    
     }
 
     public void fillPages() {
         
+      DefaultComboBoxModel model = (DefaultComboBoxModel) view.getjComboBoxPage().getModel();
+      
+      model.removeAllElements();
+      
         int cont = 0;
         
         for (String string : body) {
             
-            view.getjComboBoxPage().addItem(cont);
+            model.addElement(cont);
             
             cont++;
         }
+    }
+
+    public void goToPage() {
+    
+        Integer index = (Integer) view.getjComboBoxPage().getModel().getSelectedItem();
+        
+            if(body.isEmpty()== false && index != null){
+                
+              view.getjTextAreaBody().setText(body.get(index));
+            }
     }
 }
