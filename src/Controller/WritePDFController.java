@@ -8,6 +8,7 @@ package Controller;
 import PDF.PDFGenerator;
 import View.WritePDF;
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class WritePDFController {
     
     private final WritePDF view;
     private PDFGenerator generator; 
+    private ArrayList<String> body = new ArrayList<>();
 
     public WritePDFController(WritePDF view) {
         this.view = view;
@@ -24,12 +26,15 @@ public class WritePDFController {
     }
 
     public void generatePDF() {
+        
+        String title = view.getjTextFieldTitle().getText();
+        
      
-        File pdf = generator.createPDF(view);
+        File pdf = generator.createPDF(view,title);
         
         if(pdf.exists()){
             
-          generator.fillPDF(pdf,,);
+          generator.fillPDF(pdf,title,body);
         }
     }
 

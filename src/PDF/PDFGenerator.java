@@ -35,7 +35,7 @@ public class PDFGenerator {
       
     }
     
-    public File createPDF(Component view) {
+    public File createPDF(Component view, String title) {
         
          
         JFileChooser  chooser = new JFileChooser();
