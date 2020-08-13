@@ -39,10 +39,12 @@ public class PDFGenerator {
     
     public File createPDF(Component view, String title) {
         
-         
+        JOptionPane.showMessageDialog(view, "Clique em 'Ok' para escolher onde deseja salvar");
+        
         JFileChooser  chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter("PDF", "*.pdf"));
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        
         
         
         File save = new File("");
@@ -51,8 +53,25 @@ public class PDFGenerator {
         if(result == JFileChooser.APPROVE_OPTION){
             
             save = chooser.getSelectedFile();
+            
+            if (save.isDirectory()) {
+               
+                try {
+                    File pdf = new File(save.getAbsolutePath()+"/"+title+".pdf");
+                  
+                    pdf.createNewFile();
+                    
+                    System.out.println(pdf.getAbsolutePath()+"     file created");
+                    
+                    save = pdf;
+                    
+               } catch (IOException ex) {
+                   
+                    Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+                    return null;
+                }
+            }
         }
-        
         return save;
     }
 
