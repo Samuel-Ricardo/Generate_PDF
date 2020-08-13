@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.WritePDFController;
+
 /**
  *
  * @author Samuel
@@ -14,8 +16,13 @@ public class WritePDF extends javax.swing.JFrame {
     /**
      * Creates new form WritePDF
      */
+    
+    private final WritePDFController controller;
+    
     public WritePDF() {
         initComponents();
+        
+        controller  = new WritePDFController(this);
     }
 
     /**
