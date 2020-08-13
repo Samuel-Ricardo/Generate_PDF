@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
@@ -81,13 +82,22 @@ public class PDFGenerator {
             
             document.close();
             
+            JOptionPane.showMessageDialog(null, "Salvo com Sucesso "
+                                           + "\n Local: "+ pdf.getAbsolutePath());
+            
         } catch (FileNotFoundException | DocumentException ex) {
+            
             Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, "Erro ao Criar PDF: " + ex);
+              
         } finally {
             try {
                 outputStream.close();
+                
             } catch (IOException ex) {
+                
                 Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Erro ao fechar a stream");
             }
         }
     }
