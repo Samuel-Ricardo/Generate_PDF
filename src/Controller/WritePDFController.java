@@ -5,7 +5,11 @@
  */
 package Controller;
 
+import PDF.PDFGenerator;
 import View.WritePDF;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -14,10 +18,16 @@ import View.WritePDF;
 public class WritePDFController {
     
     private final WritePDF view;
+    private PDFGenerator generator; 
 
     public WritePDFController(WritePDF view) {
         this.view = view;
+        this.generator = new PDFGenerator();
     }
-    
-    
+
+    public void generatePDF() {
+     
+        generator.createPDF(view);
+
+    }
 }
