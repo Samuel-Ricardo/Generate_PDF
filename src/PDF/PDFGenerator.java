@@ -5,10 +5,21 @@
  */
 package PDF;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Component;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -16,10 +27,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class PDFGenerator {
 
-    public File createPDF(Component view) {
-     
-        JFileChooser chooser = new JFileChooser();
+   
+    private PdfWriter writer;
+
+    public PDFGenerator() {
         
+      
+    }
+    
+    public File createPDF(Component view) {
+        
+         
+        JFileChooser  chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter("PDF", "*.pdf"));
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         
@@ -33,6 +52,35 @@ public class PDFGenerator {
         }
         
         return save;
+    }
+
+    public void fillPDF(File pdf, String title, ArrayList<String> body) {
+     
+        FileOutputStream outputStream = null;
+        try {
+            
+            Document document = new Document();
+            
+            outputStream = new FileOutputStream(pdf);
+            
+            PdfWriter.getInstance(document, outputStream);
+            
+            document.open();
+            
+                document.setPageSize(PageSize.A4);
+                document.addTitle(title);
+            
+            document.close();
+            
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                outputStream.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
 }

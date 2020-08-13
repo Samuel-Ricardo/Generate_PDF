@@ -8,8 +8,6 @@ package Controller;
 import PDF.PDFGenerator;
 import View.WritePDF;
 import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -27,7 +25,11 @@ public class WritePDFController {
 
     public void generatePDF() {
      
-        generator.createPDF(view);
-
+        File pdf = generator.createPDF(view);
+        
+        if(pdf.exists()){
+            
+          generator.fillPDF(pdf,,);
+        }
     }
 }
