@@ -8,6 +8,7 @@ package PDF;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Component;
 import java.io.File;
@@ -69,6 +70,14 @@ public class PDFGenerator {
             
                 document.setPageSize(PageSize.A4);
                 document.addTitle(title);
+                document.addCreationDate();
+                document.addCreator("Samuel Ricardo");
+                document.addHeader(title, "pao");
+                
+                for (String string : body) {
+                
+                    document.add(new Paragraph(string));
+            }
             
             document.close();
             
