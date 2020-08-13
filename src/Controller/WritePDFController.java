@@ -27,6 +27,11 @@ public class WritePDFController {
 
     public void generatePDF() {
         
+        if(body.isEmpty()){
+            
+            body.add(view.getjTextAreaBody().getText());
+        }
+        
         String title = view.getjTextFieldTitle().getText();
         
      
@@ -39,6 +44,9 @@ public class WritePDFController {
     }
 
     public void addParagraph() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        body.add(view.getjTextAreaBody().getText());
+        
+        view.getjTextAreaBody().setText("");
     }
 }
