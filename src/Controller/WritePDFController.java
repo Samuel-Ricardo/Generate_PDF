@@ -7,8 +7,14 @@ package Controller;
 
 import PDF.PDFGenerator;
 import View.WritePDF;
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -29,7 +35,15 @@ public class WritePDFController {
 
     public void generatePDF() {
         
-        body.add(view.getjTextAreaBody().getText());
+//        for(String string : body){    
+//            
+//            if(string.equals(view.getjTextAreaBody().getText()) == false){
+                
+                body.add(view.getjTextAreaBody().getText());
+//            }
+//            
+//        }
+        
         
         String title = view.getjTextFieldTitle().getText();
         
@@ -90,5 +104,16 @@ public class WritePDFController {
                 
               view.getjTextAreaBody().setText(body.get(index));
             }
+    }
+
+    public void showGitHub() {
+     
+        try {
+            URI link = new URI("https://github.com/Samuel-Ricardo/Generate_PDF");
+            Desktop.getDesktop().browse(link);
+            
+        } catch (URISyntaxException | IOException ex) {
+            Logger.getLogger(WritePDFController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
