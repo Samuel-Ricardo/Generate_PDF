@@ -52,25 +52,25 @@ public class PDFGenerator {
         
         if(result == JFileChooser.APPROVE_OPTION){
             
-            save = chooser.getSelectedFile();
+            save = chooser.getCurrentDirectory();
             
-            if (save.isDirectory()) {
-               
-                try {
-                    File pdf = new File(save.getAbsolutePath()+"/"+title+".pdf");
-                  
-                    pdf.createNewFile();
-                    
-                    System.out.println(pdf.getAbsolutePath()+"     file created");
-                    
-                    save = pdf;
-                    
-               } catch (IOException ex) {
-                   
-                    Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
-                    return null;
+                if (save.isDirectory()) {
+
+                    try {
+                        File pdf = new File(save.getAbsolutePath()+"/"+title+".pdf");
+
+                        pdf.createNewFile();
+
+                        System.out.println(pdf.getAbsolutePath()+"     file created");
+
+                        save = pdf;
+
+                   } catch (IOException ex) {
+
+                        Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+                        return null;
+                    }
                 }
-            }
         }
         return save;
     }
